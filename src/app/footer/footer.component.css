@@ -1,0 +1,13 @@
+.p {
+    font-size: 80%;
+    font-family: cursive;
+    padding: 0 10px;
+    color: rgb(58, 58, 58);
+}
+
+.a {
+    color: rgb(58, 58, 58);
+}
+.a:hover {
+    color: rgb(170, 169, 169);
+}
