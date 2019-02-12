@@ -16,12 +16,12 @@ export class ArticlesItemComponent implements OnInit {
 
   editArticleButton($event) {
     $event.preventDefault()
-    alert('editArticleButton');
+    console.log('editArticleButton');
   }
 
   deleteArticleButton($event) {
     $event.preventDefault()
-    alert('deleteArticleButton');
+    console.log('deleteArticleButton');
   }
 
 }

@@ -1,43 +1,45 @@
 .app-header {
     width: 100%;
-    height: 10vw;
+    height: 6vw;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     flex: 0 0 auto;
-    color: rgb(239, 239, 239);
-    background-color: rgb(39, 99, 196);
-    box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+    color: rgb(42,42,42);
+    background-color: rgb(255,255,255);
+    box-shadow: 0 2px 6px rgb(42,42,42);
+    z-index: 1;
 }
 
 .app-articles {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     flex: 1 0 auto;
-    color: black;
+    background-color: rgb(250,250,250);
+    color: rgb(38,38,38);
 }
 
 .app-footer {
     width: 100%;
-    height: 3vw;
+    height: 1.8vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex: 0 0 auto;
-    background-color: rgb(239, 239, 239);
-    box-shadow: 0 -5px 5px rgba(0,0,0,0.5);
+    background-color: rgb(255,255,255);
+    box-shadow: 0 -2px 6px rgb(42,42,42);
 }
 
 .app-header, .app-articles, .app-footer {
     font-size: 1.1vw;
 }
 
-@media screen and (max-device-width: 700px) {
+@media screen and (max-device-width: 1100px) {
     .app-header, .app-articles, .app-footer {
         font-size: 2vw;
     }

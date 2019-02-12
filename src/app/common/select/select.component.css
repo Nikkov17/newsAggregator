@@ -1,5 +1,7 @@
 .select {
+    background-color: rgb(35,31,32);
+    color: white;
     border: 0;
-    border-radius: 5px;
+    border-radius: 2px;
     font-size: 110%;
 }

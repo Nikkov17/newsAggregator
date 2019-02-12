@@ -1,15 +1,17 @@
 .article-card {
-    padding: 1%;
+    margin-left: 10%;
+    width: 80%;
+    background-color: white;
+    border: 0.3px solid black;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: top;
-    width: 100%;
-    border: 0.5px solid black;
+    font-size: 1vw;
 }
 
 .article-image {
-    height: 16vw;
+    height: 12vw;
 }
 
 .article-content {
@@ -25,10 +27,25 @@
     margin-left: 4%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
 }
 
 .delete-article-button {
     margin-top: 20%;
+}
+
+@media screen and (max-device-width: 1100px) {
+    .article-card {
+        font-size: 1.5vw;
+    }
+
+    .article-image {
+        height: 20vw;
+        float: left;
+    }
+
+    .article-control {
+        margin-left: 0;
+    }
 }

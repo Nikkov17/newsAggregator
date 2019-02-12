@@ -11,6 +11,7 @@ import { FormComponent } from './common/form/form.component';
 import { CheckboxComponent } from './common/checkbox/checkbox.component';
 import { ButtonComponent } from './common/button/button.component';
 import { ArticlesItemComponent } from './articles/articles-item/articles-item.component';
+import { AddarticleComponent } from './addarticle/addarticle.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ArticlesItemComponent } from './articles/articles-item/articles-item.co
     FormComponent,
     CheckboxComponent,
     ButtonComponent,
-    ArticlesItemComponent
+    ArticlesItemComponent,
+    AddarticleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,12 @@
 .form-input {
+    background-color: rgb(35,31,32);
+    color: white;
     padding: 2px;
     border: 0;
     font-size: 90%;
-    border-radius: 5px;
+    border-radius: 2px;
+}
+
+.form-input::placeholder {
+    color: white;
 }

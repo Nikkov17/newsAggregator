@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,25 +19,26 @@ export class HeaderComponent implements OnInit {
 
   loginLogoutButton($event) {
     $event.preventDefault()
-    alert('loginLogoutButton');
+    console.log('loginLogoutButton');
   }
 
   addArticleButton($event) {
-    $event.preventDefault()
-    alert('addArticleButton');
+    $event.preventDefault();
+    this.router.navigate(['addarticle']);
+    console.log('addArticleButton');
   }
   
   filterFormSubmit($event) {
     $event.preventDefault()
-    alert('filterFormSubmit');
+    console.log('filterFormSubmit');
   }
 
   onSelectChange(value) {
-    alert('onSelectChange');
+    console.log('onSelectChange');
     this.ChoosenSource = value;
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
