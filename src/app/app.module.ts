@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { SelectComponent } from './header/select/select.component';
-import { FormComponent } from './header/form/form.component';
-import { CheckboxComponent } from './header/checkbox/checkbox.component';
+import { SelectComponent } from './common/select/select.component';
+import { FormComponent } from './common/form/form.component';
+import { CheckboxComponent } from './common/checkbox/checkbox.component';
+import { ButtonComponent } from './common/button/button.component';
+import { ArticlesItemComponent } from './articles/articles-item/articles-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CheckboxComponent } from './header/checkbox/checkbox.component';
     ArticlesComponent,
     SelectComponent,
     FormComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ButtonComponent,
+    ArticlesItemComponent
   ],
   imports: [
     BrowserModule,

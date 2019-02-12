@@ -1,10 +1,13 @@
-<span></span>
+<span class="login-section">
+    <p>{{login}}</p>
+    <app-button (click)='loginLogoutButton($event)' class='login-logout-button' title="logout" (update)="onUpdate($event)"></app-button>
+</span>
 <h1 class='choosen-source'>
     {{ChoosenSource}}
 </h1>
 <span class='edit-source-section'>
-    <app-select class='app-select' [select]="select" (update)="onUpdate($event)"></app-select>
-    <app-form class='app-form' [form]="form" (update)="onUpdate($event)"></app-form>
-    <app-checkbox class='app-checkbox' [checkbox]="checkbox" (update)="onUpdate($event)"></app-checkbox>
-    <button class='add-article-button'>Add article</button>
+    <app-select [select]="select" (change)="onSelectChange($event.target.value)" (update)="onUpdate($event)"></app-select>
+    <app-form (submit)='filterFormSubmit($event)' placeholder="type your text..." button="filter" (update)="onUpdate($event)"></app-form>
+    <app-checkbox checkbox="Only created by me" (update)="onUpdate($event)"></app-checkbox>
+    <app-button (click)='addArticleButton($event)' class='add-article-button' title="Add article" (update)="onUpdate($event)"></app-button>
 </span>

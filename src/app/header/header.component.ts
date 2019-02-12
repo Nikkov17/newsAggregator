@@ -12,14 +12,29 @@ export class HeaderComponent implements OnInit {
     placeholder: 'choose source'
   }
 
-  form = {
-    placeholder: 'type your text...',
-    button: 'filter'
-  }
-
-  checkbox = 'Only created by me'
+  login = 'login'
 
   ChoosenSource = 'Choosen source'
+
+  loginLogoutButton($event) {
+    $event.preventDefault()
+    alert('loginLogoutButton');
+  }
+
+  addArticleButton($event) {
+    $event.preventDefault()
+    alert('addArticleButton');
+  }
+  
+  filterFormSubmit($event) {
+    $event.preventDefault()
+    alert('filterFormSubmit');
+  }
+
+  onSelectChange(value) {
+    alert('onSelectChange');
+    this.ChoosenSource = value;
+  }
 
   constructor() {}
 

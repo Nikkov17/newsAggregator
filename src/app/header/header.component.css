@@ -1,3 +1,13 @@
+.login-section {
+    width: 6%;
+    margin-left: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-family: monospace;
+}
+
 .edit-source-section {
     width: 100%;
     display: flex;
@@ -13,6 +23,6 @@
 .add-article-button {
     padding: 2px;
     border: 0;
-    font-family: sans-serif;
+    font-family: monospace;
     border-radius: 5px;
 }

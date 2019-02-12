@@ -1,0 +1,18 @@
+<div class='article-card'>
+    <img class="article-image" src="{{item.image}}" alt="news image">
+    <div class="article-content">
+        <h1>
+          {{item.title}}
+        </h1>
+        <p>
+          {{item.text}}
+        </p>
+        <a href="{{item.url}}" class='url'>
+            Read more...
+        </a>
+    </div>
+    <div class="article-control">
+        <app-button (click)='editArticleButton($event)' class='edit-article-button' title="edit" (update)="onUpdate($event)"></app-button>
+        <app-button (click)='deleteArticleButton($event)' class='delete-article-button' title="delete" (update)="onUpdate($event)"></app-button>
+    </div>
+</div>

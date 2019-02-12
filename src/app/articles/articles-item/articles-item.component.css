@@ -1,0 +1,34 @@
+.article-card {
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: top;
+    width: 100%;
+    border: 0.5px solid black;
+}
+
+.article-image {
+    height: 16vw;
+}
+
+.article-content {
+    width: 70%;
+    margin-left: 1%;
+}
+
+.url {
+    color: grey;
+}
+
+.article-control {
+    margin-left: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+}
+
+.delete-article-button {
+    margin-top: 20%;
+}

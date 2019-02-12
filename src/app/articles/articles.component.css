@@ -1,6 +1,14 @@
 .articles-list {
+    width: 100%;
+    margin-top: 20px;
     display: flex;
+    list-style-type: none;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    font-family: monospace;
+}
+
+.articles-list-item {
+    width: 100%;
 }

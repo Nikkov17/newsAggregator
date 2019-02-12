@@ -1,3 +1,5 @@
-<ul class='articles-list'>
-  <li>article 1</li>
+<ul class='articles-list' *ngFor="let article of articlesArray">
+  <li class='articles-list-item'>
+    <app-articles-item [item]="article" (update)="onUpdate($event)"></app-articles-item>
+  </li>
 </ul>
