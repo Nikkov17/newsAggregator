@@ -7,11 +7,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { SelectComponent } from './common/select/select.component';
-import { FormComponent } from './common/form/form.component';
 import { CheckboxComponent } from './common/checkbox/checkbox.component';
 import { ButtonComponent } from './common/button/button.component';
 import { ArticlesItemComponent } from './articles/articles-item/articles-item.component';
 import { AddarticleComponent } from './addarticle/addarticle.component';
+import { InputComponent } from './common/input/input.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +20,11 @@ import { AddarticleComponent } from './addarticle/addarticle.component';
     FooterComponent,
     ArticlesComponent,
     SelectComponent,
-    FormComponent,
     CheckboxComponent,
     ButtonComponent,
     ArticlesItemComponent,
-    AddarticleComponent
+    AddarticleComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

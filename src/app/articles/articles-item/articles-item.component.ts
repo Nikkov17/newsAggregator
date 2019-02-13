@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ArticlesModelService } from '../../articles-model.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles-item',
@@ -9,19 +11,25 @@ export class ArticlesItemComponent implements OnInit {
 
   @Input() item
 
-  constructor() { }
+  constructor(private ArticlesModelService: ArticlesModelService, private router: Router) { }
 
   ngOnInit() {
   }
 
   editArticleButton($event) {
-    $event.preventDefault()
-    console.log('editArticleButton');
+    $event.preventDefault();
+    this.ArticlesModelService.currentItem = this.item;
+    this.router.navigate(['editarticle']);
   }
 
   deleteArticleButton($event) {
     $event.preventDefault()
-    console.log('deleteArticleButton');
+    let newArray = this.ArticlesModelService.articlesArray.filter((el) => {
+      return el !== this.item;
+    })
+
+    this.ArticlesModelService.articlesArray = newArray;
+    this.router.navigate(['']);
   }
 
 }

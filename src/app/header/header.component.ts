@@ -17,24 +17,24 @@ export class HeaderComponent implements OnInit {
 
   ChoosenSource = 'Choosen source'
 
+  redirectHome($event) {
+    this.router.navigate(['']);
+  }
+
   loginLogoutButton($event) {
     $event.preventDefault()
-    console.log('loginLogoutButton');
   }
 
   addArticleButton($event) {
     $event.preventDefault();
     this.router.navigate(['addarticle']);
-    console.log('addArticleButton');
   }
   
   filterFormSubmit($event) {
     $event.preventDefault()
-    console.log('filterFormSubmit');
   }
 
   onSelectChange(value) {
-    console.log('onSelectChange');
     this.ChoosenSource = value;
   }
 

@@ -1,13 +1,13 @@
 <div class='article-card'>
-    <img class="article-image" src="{{item.image}}" alt="news image">
+    <img *ngIf="item.image" class="article-image" src="{{item.image}}" alt="news image">
     <div class="article-content">
-        <h1>
+        <h1 *ngIf="item.title">
           {{item.title}}
         </h1>
-        <p>
+        <p *ngIf="item.text">
           {{item.text}}
         </p>
-        <a href="{{item.url}}" class='url'>
+        <a *ngIf="item.url" href="{{item.url}}" class='url'>
             Read more...
         </a>
     </div>

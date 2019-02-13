@@ -1,5 +1,5 @@
 <span class='header-top'>
-    <h1 class='choosen-source'>
+    <h1 class='choosen-source' (click)="redirectHome($event)">
         {{ChoosenSource}}
     </h1>
     <div class='login-section'>
@@ -9,7 +9,10 @@
 </span>
 <span class='edit-source-section'>
     <app-select [select]="select" (change)="onSelectChange($event.target.value)" (update)="onUpdate($event)"></app-select>
-    <app-form (submit)='filterFormSubmit($event)' placeholder="type your text..." button="filter" (update)="onUpdate($event)"></app-form>
+    <form class="form">
+        <app-input class='login-logout-input' placeholder="type your text..."></app-input>
+        <app-button class='login-logout-button' title="filter" (update)="onUpdate($event)"></app-button>
+    </form>
     <app-checkbox checkbox="Only created by me" (update)="onUpdate($event)"></app-checkbox>
     <app-button (click)='addArticleButton($event)' class='add-article-button' title="Add article" buttonRouter="addarticle" (update)="onUpdate($event)"></app-button>
 </span>

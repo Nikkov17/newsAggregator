@@ -15,6 +15,7 @@
 }
 
 .choosen-source {
+    cursor: pointer;
     color: rgb(35,31,32);
     font-family: fantasy;
 }
