@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ArticlesModelService } from '../../articles-model.service';
+import { ArticlesModelService } from '../../../services/articles-model.service';
 import { Router } from '@angular/router';
 
 @Component({

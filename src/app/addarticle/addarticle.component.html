@@ -1,7 +1,0 @@
-<form (submit)="onSubmit($event)" class='createArticleCard'>
-    <app-input class='new-article-input' value={{valueTitle}} placeholder={{title}}></app-input>
-    <app-input class='new-article-input' value={{valueText}} placeholder={{text}}></app-input>
-    <app-input class='new-article-input' value={{valueImage}} placeholder={{image}}></app-input>
-    <app-input class='new-article-input' value={{valueUrl}} placeholder={{url}}></app-input>
-    <app-button type="submit" class='new-article-button' title="save" (click)='addArticle($event)' (update)="onUpdate($event)"></app-button>
-</form>

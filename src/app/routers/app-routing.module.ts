@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AddarticleComponent } from './addarticle/addarticle.component';
-import { ArticlesComponent } from './articles/articles.component';
+import { AddarticleComponent } from '../components/articles/addarticle/addarticle.component';
+import { ArticlesComponent } from '../components/articles/articles.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/articles', pathMatch: 'full' },

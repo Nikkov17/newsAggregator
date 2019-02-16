@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesModelService } from '../articles-model.service';
+import { ArticlesModelService } from '../../services/articles-model.service';
 
 @Component({
   selector: 'app-articles',
@@ -13,6 +13,7 @@ export class ArticlesComponent implements OnInit {
   articles: any[];
 
   ngOnInit() {
+    this.ArticlesModelService.currentItem = null;
     this.articles = this.ArticlesModelService.getArticles();
   }
 

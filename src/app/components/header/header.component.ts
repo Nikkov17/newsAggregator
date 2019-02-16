@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticlesModelService } from '../../services/articles-model.service';
 
 @Component({
   selector: 'app-header',
@@ -35,10 +36,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onSelectChange(value) {
+    this.ArticlesModelService.sendFetch(value);
     this.ChoosenSource = value;
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private ArticlesModelService: ArticlesModelService) {}
 
   ngOnInit() {}
 

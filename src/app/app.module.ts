@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routers/app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { SelectComponent } from './common/select/select.component';
-import { CheckboxComponent } from './common/checkbox/checkbox.component';
-import { ButtonComponent } from './common/button/button.component';
-import { ArticlesItemComponent } from './articles/articles-item/articles-item.component';
-import { AddarticleComponent } from './addarticle/addarticle.component';
-import { InputComponent } from './common/input/input.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { SelectComponent } from './components/common/select/select.component';
+import { CheckboxComponent } from './components/common/checkbox/checkbox.component';
+import { ButtonComponent } from './components/common/button/button.component';
+import { ArticlesItemComponent } from './components/articles/articles-item/articles-item.component';
+import { AddarticleComponent } from './components/articles/addarticle/addarticle.component';
+import { InputComponent } from './components/common/input/input.component';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesModelService } from '../articles-model.service';
+import { ArticlesModelService } from '../../../services/articles-model.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 export class AddarticleComponent implements OnInit {
 
   title = "type title..."
-  text = "type content..."
-  image = "type image url..."
+  Content = "type content..."
+  Description = "type description..."
+  urlToImage = "type image url..."
   url = "type article url..."
   valueTitle
-  valueText
-  valueImage
+  valueContent
+  valueDescription
+  valueurlToImage
   valueUrl
 
   constructor(private ArticlesModelService: ArticlesModelService, private router: Router) { }
@@ -23,12 +25,13 @@ export class AddarticleComponent implements OnInit {
   onSubmit($event) {
     let newArticle = {
       title: $event.target[0].value,
-      text: $event.target[1].value,
-      image: $event.target[2].value,
-      url: $event.target[3].value
+      content: $event.target[1].value,
+      description: $event.target[2].value,
+      urlToImage: $event.target[3].value,
+      url: $event.target[4].value
     };
 
-    if (newArticle.title && newArticle.text) {
+    if (newArticle.title && (newArticle.content || newArticle.description)) {
       if (this.ArticlesModelService.currentItem) {
         this.ArticlesModelService.changeArticle(newArticle);
         this.router.navigate(['']);
@@ -42,8 +45,9 @@ export class AddarticleComponent implements OnInit {
   ngOnInit() {
     if (this.ArticlesModelService.currentItem) {
       this.valueTitle = this.ArticlesModelService.currentItem.title;
-      this.valueText = this.ArticlesModelService.currentItem.text;
-      this.valueImage = this.ArticlesModelService.currentItem.image;
+      this.valueContent = this.ArticlesModelService.currentItem.content;
+      this.valueDescription = this.ArticlesModelService.currentItem.description;
+      this.valueurlToImage = this.ArticlesModelService.currentItem.urlToImage;
       this.valueUrl = this.ArticlesModelService.currentItem.url;
     }
   }
