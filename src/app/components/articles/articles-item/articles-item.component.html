@@ -10,11 +10,14 @@
         <p *ngIf="item.description">
           {{item.description}}
         </p>
+        <p *ngIf="item.publishedAt">
+          {{item.publishedAt | date}}
+        </p>
         <a *ngIf="item.url" href="{{item.url}}" class='url'>
             Read more...
         </a>
     </div>
-    <div class="article-control">
+    <div *ngIf="item.manuallyAdded" class="article-control">
         <app-button (click)='editArticleButton($event)' class='edit-article-button' title="edit" (update)="onUpdate($event)"></app-button>
         <app-button (click)='deleteArticleButton($event)' class='delete-article-button' title="delete" (update)="onUpdate($event)"></app-button>
     </div>

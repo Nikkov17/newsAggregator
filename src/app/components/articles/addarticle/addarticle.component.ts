@@ -23,6 +23,7 @@ export class AddarticleComponent implements OnInit {
   constructor(private ArticlesModelService: ArticlesModelService, private router: Router) { }
 
   onSubmit($event) {
+    $event.preventDefault();
     let newArticle = {
       title: $event.target[0].value,
       content: $event.target[1].value,

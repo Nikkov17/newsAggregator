@@ -10,7 +10,7 @@ import { ArticlesModelService } from '../../services/articles-model.service';
 export class HeaderComponent implements OnInit {
 
   select = {
-    sourcesArray: ['abc-news', 'bbc-news'],
+    sourcesArray: ['abc-news', 'bbc-news', 'ansa', 'bbc-sport', 'bloomberg'],
     placeholder: 'choose source'
   }
 

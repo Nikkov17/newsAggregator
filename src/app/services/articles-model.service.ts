@@ -30,7 +30,11 @@ export class ArticlesModelService {
   }
 
   setArticles(articles) {
-    this.articlesArray = this.articlesArray.concat(articles);
+    let manuallyAddedArticles = this.articlesArray.filter((item) => {
+        return item.manuallyAdded;
+    });
+
+    this.articlesArray = articles.concat(manuallyAddedArticles);
     this.eventChange();
   }
 
@@ -39,11 +43,13 @@ export class ArticlesModelService {
   }
 
   addNewArticle(item) {
+    item.manuallyAdded = true;
     this.articlesArray.push(item);
     this.eventChange();
   }
 
   changeArticle(item) {
+    item.manuallyAdded = true;
     let index = this.articlesArray.indexOf(this.currentItem);
 
     this.articlesArray[index] = item;
@@ -72,7 +78,7 @@ export class ArticlesModelService {
   }
 
   constructor() {
-    this.articlesArray= new Array<[]>()
-    this.observableArticles= new BehaviorSubject<[]>(this.articlesArray);
+    this.articlesArray = new Array<[]>()
+    this.observableArticles = new BehaviorSubject<[]>(this.articlesArray);
   }
 }
