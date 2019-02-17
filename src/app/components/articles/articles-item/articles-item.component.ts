@@ -24,11 +24,7 @@ export class ArticlesItemComponent implements OnInit {
 
   deleteArticleButton($event) {
     $event.preventDefault()
-    let newArray = this.ArticlesModelService.articlesArray.filter((el) => {
-      return el !== this.item;
-    })
-
-    this.ArticlesModelService.articlesArray = newArray;
+    this.ArticlesModelService.delete(this.item);
     this.router.navigate(['']);
   }
 

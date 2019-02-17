@@ -10,11 +10,15 @@ export class ArticlesComponent implements OnInit {
 
   constructor(private ArticlesModelService: ArticlesModelService) { }
 
-  articles: any[];
+  articles
 
   ngOnInit() {
+    this.ArticlesModelService.observableArticles.subscribe(
+        (articles) => {
+          this.articles = articles;
+        }
+      );
     this.ArticlesModelService.currentItem = null;
-    this.articles = this.ArticlesModelService.getArticles();
   }
 
 }

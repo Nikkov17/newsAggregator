@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class ArticlesModelService {
 
   currentItem
-
-  articlesArray = []
+  articlesArray
+  observableArticles
 
   sendFetch(value) {
     let result;
@@ -30,6 +31,7 @@ export class ArticlesModelService {
 
   setArticles(articles) {
     this.articlesArray = this.articlesArray.concat(articles);
+    this.eventChange();
   }
 
   getArticles() {
@@ -38,13 +40,24 @@ export class ArticlesModelService {
 
   addNewArticle(item) {
     this.articlesArray.push(item);
+    this.eventChange();
   }
 
   changeArticle(item) {
     let index = this.articlesArray.indexOf(this.currentItem);
 
     this.articlesArray[index] = item;
+    this.eventChange();
     this.currentItem = null;
+  }
+
+  delete(item) {
+    let newArray = this.articlesArray.filter((el) => {
+      return el !== item;
+    })
+
+    this.articlesArray = newArray;
+    this.eventChange();
   }
 
   isExclusiveByTitle(item) {
@@ -53,5 +66,13 @@ export class ArticlesModelService {
     });
     return !exclusive.length;
   }
-  constructor() { }
+
+  eventChange() {
+    this.observableArticles.next(this.articlesArray);
+  }
+
+  constructor() {
+    this.articlesArray= new Array<[]>()
+    this.observableArticles= new BehaviorSubject<[]>(this.articlesArray);
+  }
 }
