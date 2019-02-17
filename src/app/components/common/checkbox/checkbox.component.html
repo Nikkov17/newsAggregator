@@ -1,4 +1,4 @@
 <div>
-  <input class='input' type="checkbox" id="{{checkbox}}" name="{{checkbox}}">
+  <input (click)="onCheckboxUpdate($event)" class='input' type="checkbox" id="{{checkbox}}" name="{{checkbox}}">
   <label class='label' for="{{checkbox}}">{{checkbox}}</label>
 </div>

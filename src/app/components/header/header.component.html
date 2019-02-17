@@ -11,8 +11,8 @@
     <app-select [select]="select" (change)="onSelectChange($event.target.value)" (update)="onUpdate($event)"></app-select>
     <form class="form">
         <app-input class='login-logout-input' placeholder="type your text..."></app-input>
-        <app-button class='login-logout-button' title="filter" (update)="onUpdate($event)"></app-button>
+        <app-button type="submit" class='login-logout-button' title="filter" (update)="onUpdate($event)"></app-button>
     </form>
-    <app-checkbox checkbox="Only created by me" (update)="onUpdate($event)"></app-checkbox>
-    <app-button (click)='addArticleButton($event)' class='add-article-button' title="Add article" buttonRouter="addarticle" (update)="onUpdate($event)"></app-button>
+    <app-checkbox checkbox="Only created by me"></app-checkbox>
+    <app-button (click)='addArticleButton($event)' class='add-article-button' title="Add article" (update)="onUpdate($event)"></app-button>
 </span>

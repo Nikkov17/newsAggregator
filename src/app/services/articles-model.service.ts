@@ -7,8 +7,11 @@ import { BehaviorSubject } from 'rxjs';
 export class ArticlesModelService {
 
   currentItem
-  articlesArray
+  articlesToShow
   observableArticles
+  apiArticles = []
+  myArticles = []
+  isManually:boolean = false
 
   sendFetch(value) {
     let result;
@@ -22,63 +25,68 @@ export class ArticlesModelService {
         return result;
     })
     .then((result) => {
-        this.setArticles(result.articles);
+        this.addApiArticles(result.articles);
     })
     .catch((error) => {
         throw error;
     })
   }
 
-  setArticles(articles) {
-    let manuallyAddedArticles = this.articlesArray.filter((item) => {
-        return item.manuallyAdded;
-    });
-
-    this.articlesArray = articles.concat(manuallyAddedArticles);
+  updateArticlesToShowArray() {
+    this.articlesToShow = this.apiArticles.concat(this.myArticles);
+    if (this.isManually) {
+      this.articlesToShow = this.myArticles;
+    }
     this.eventChange();
   }
 
-  getArticles() {
-    return this.articlesArray;
+  addApiArticles(articles) {
+    this.apiArticles = articles;
+    this.updateArticlesToShowArray();
+  }
+
+  switchManuallyAddedArticles(isManually) {
+    this.isManually = isManually;
+    this.updateArticlesToShowArray();
   }
 
   addNewArticle(item) {
     item.manuallyAdded = true;
-    this.articlesArray.push(item);
-    this.eventChange();
+    this.myArticles.push(item);
+    this.updateArticlesToShowArray();
   }
 
   changeArticle(item) {
     item.manuallyAdded = true;
-    let index = this.articlesArray.indexOf(this.currentItem);
+    let index = this.myArticles.indexOf(this.currentItem);
 
-    this.articlesArray[index] = item;
-    this.eventChange();
+    this.myArticles[index] = item;
     this.currentItem = null;
+    this.updateArticlesToShowArray();
   }
 
   delete(item) {
-    let newArray = this.articlesArray.filter((el) => {
+    let newArray = this.myArticles.filter((el) => {
       return el !== item;
     })
 
-    this.articlesArray = newArray;
-    this.eventChange();
+    this.myArticles = newArray;
+    this.updateArticlesToShowArray();
   }
 
   isExclusiveByTitle(item) {
-    let exclusive = this.articlesArray.filter((el) => {
+    let exclusive = this.myArticles.filter((el) => {
       return el.title == item.title;
     });
     return !exclusive.length;
   }
 
   eventChange() {
-    this.observableArticles.next(this.articlesArray);
+    this.observableArticles.next(this.articlesToShow);
   }
 
   constructor() {
-    this.articlesArray = new Array<[]>()
-    this.observableArticles = new BehaviorSubject<[]>(this.articlesArray);
+    this.articlesToShow = new Array<[]>()
+    this.observableArticles = new BehaviorSubject<[]>(this.articlesToShow);
   }
 }
