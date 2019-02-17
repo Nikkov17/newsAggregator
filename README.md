@@ -1,3 +1,7 @@
-# gitpages:  https://nikkov17.github.io/newsAggregator/
+# gitpages:  
 
-# run: ng serve --open
+https://nikkov17.github.io/newsAggregator/
+
+# run: 
+
+ng serve --open
