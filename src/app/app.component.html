@@ -1,0 +1,5 @@
+<app-header class='app-header' ng-controller="app-header" (update)="onUpdate($event)"></app-header>
+<div class='app-articles'>
+        <router-outlet></router-outlet>
+</div>
+<app-footer class='app-footer' ng-controller="app-footer" (update)="onUpdate($event)"></app-footer>

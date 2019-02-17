@@ -1,0 +1,19 @@
+.createArticleCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    border: 0.3px solid black;
+}
+
+.new-article-input {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.new-article-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
