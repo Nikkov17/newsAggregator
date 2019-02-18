@@ -22,17 +22,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  loginLogoutButton($event) {
-    $event.preventDefault()
-  }
-
   addArticleButton($event) {
     $event.preventDefault();
     this.router.navigate(['addarticle']);
   }
   
   filterFormSubmit($event) {
-    $event.preventDefault()
+    $event.preventDefault();
+    this.ArticlesModelService.filter = $event.target[0].value;
+    this.ArticlesModelService.updateArticlesToShowArray();
   }
 
   onSelectChange(value) {

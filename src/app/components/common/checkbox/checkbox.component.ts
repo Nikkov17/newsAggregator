@@ -11,7 +11,8 @@ export class CheckboxComponent implements OnInit {
   @Input() checkbox
 
   onCheckboxUpdate($event) {
-    this.ArticlesModelService.switchManuallyAddedArticles($event.target.checked);
+    this.ArticlesModelService.isManually = $event.target.checked;
+    this.ArticlesModelService.updateArticlesToShowArray();
   }
   constructor(private ArticlesModelService: ArticlesModelService) { }
 

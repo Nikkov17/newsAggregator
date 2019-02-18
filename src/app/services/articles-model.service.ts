@@ -12,6 +12,7 @@ export class ArticlesModelService {
   apiArticles = []
   myArticles = []
   isManually:boolean = false
+  filter:string
 
   sendFetch(value) {
     let result;
@@ -37,16 +38,16 @@ export class ArticlesModelService {
     if (this.isManually) {
       this.articlesToShow = this.myArticles;
     }
+    if (this.filter) {
+      this.articlesToShow = this.articlesToShow.filter((el) => {
+        return el.title == this.filter;
+      });
+    }
     this.eventChange();
   }
 
   addApiArticles(articles) {
     this.apiArticles = articles;
-    this.updateArticlesToShowArray();
-  }
-
-  switchManuallyAddedArticles(isManually) {
-    this.isManually = isManually;
     this.updateArticlesToShowArray();
   }
 

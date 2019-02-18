@@ -9,7 +9,7 @@
 </span>
 <span class='edit-source-section'>
     <app-select [select]="select" (change)="onSelectChange($event.target.value)" (update)="onUpdate($event)"></app-select>
-    <form class="form">
+    <form (submit)="filterFormSubmit($event)" class="form">
         <app-input class='login-logout-input' placeholder="type your text..."></app-input>
         <app-button type="submit" class='login-logout-button' title="filter" (update)="onUpdate($event)"></app-button>
     </form>
