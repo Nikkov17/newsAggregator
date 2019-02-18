@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ArticlesModelService } from '../../../services/articles-model.service';
 
 @Component({
   selector: 'app-checkbox',
@@ -9,7 +10,11 @@ export class CheckboxComponent implements OnInit {
 
   @Input() checkbox
 
-  constructor() { }
+  onCheckboxUpdate($event) {
+    this.ArticlesModelService.isManually = $event.target.checked;
+    this.ArticlesModelService.updateArticlesToShowArray();
+  }
+  constructor(private ArticlesModelService: ArticlesModelService) { }
 
   ngOnInit() {
   }
