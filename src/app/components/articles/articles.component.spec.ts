@@ -24,8 +24,8 @@ describe('ArticlesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ArticlesComponent);
     component = fixture.componentInstance;
+    instance = fixture.debugElement.componentInstance;
     fixture.detectChanges();
-    instance = new ArticlesComponent(new ArticlesModelService());
   });
 
   describe('.ngOnInit', () => {

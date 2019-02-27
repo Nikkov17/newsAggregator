@@ -4,6 +4,7 @@ import { ArticlesItemComponent } from './articles-item.component';
 import { ArticlesModelService } from '../../../services/articles-model.service';
 import { ButtonComponent } from '../../common/button/button.component';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ArticlesItemComponent', () => {
   let component: ArticlesItemComponent;
@@ -13,6 +14,7 @@ describe('ArticlesItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [ { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }],
+      imports: [RouterTestingModule],
       declarations: [
         ArticlesItemComponent,
         ButtonComponent
@@ -25,16 +27,21 @@ describe('ArticlesItemComponent', () => {
     fixture = TestBed.createComponent(ArticlesItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    instance = new ArticlesItemComponent(new ArticlesModelService(), new Router(null, null, null, null, null,null, null, null));
+    instance = fixture.debugElement.componentInstance;
   });
 
+  //cannot get property of undefined(@Input item)
   xdescribe('.editArticleButton', () => {
     it('should call router navigate and reset currentItem', () => {
+      let event = {
+        preventDefault: function() {}
+      };
+
       instance.item = {
         urlToImage: 'dwq'
       };
 
-      spyOn(instance.router, 'navigate').and.returnValue(true);
+      instance.router.navigate.and.returnValue(true);
 
       instance.editArticleButton(event)
 
@@ -43,14 +50,19 @@ describe('ArticlesItemComponent', () => {
     });
   });
 
+  //cannot get property of undefined(@Input item)
   xdescribe('.deleteArticleButton', () => {
     it('should delete item and navigate', () => {
+      let event = {
+        preventDefault: function() {}
+      };
+
       instance.item = {
         urlToImage: 'dwq'
       };
 
       spyOn(instance.ArticlesModelService, 'delete').and.returnValue(true);
-      spyOn(instance.router, 'navigate').and.returnValue(true);
+      instance.router.navigate.and.returnValue(true);
 
       instance.deleteArticleButton(event)
 

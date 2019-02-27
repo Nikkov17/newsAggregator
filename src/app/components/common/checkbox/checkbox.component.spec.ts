@@ -19,7 +19,7 @@ describe('CheckboxComponent', () => {
     fixture = TestBed.createComponent(CheckboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    instance = new CheckboxComponent(new ArticlesModelService());
+    instance = fixture.debugElement.componentInstance;
   });
 
   describe('.onCheckboxUpdate', () => {
