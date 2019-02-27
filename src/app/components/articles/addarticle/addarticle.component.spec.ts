@@ -6,8 +6,8 @@ import { ArticlesComponent } from '../articles.component';
 import { ArticlesItemComponent } from '../articles-item/articles-item.component';
 import { ButtonComponent } from '../../common/button/button.component';
 import { ArticlesModelService } from '../../../services/articles-model.service';
-import { AppRoutingModule } from '../../../routers/app-routing.module';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AddarticleComponent', () => {
   let component: AddarticleComponent;
@@ -17,7 +17,7 @@ describe('AddarticleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [ { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }],
-      imports: [AppRoutingModule],
+      imports: [RouterTestingModule],
       declarations: [
         ArticlesComponent,
         AddarticleComponent,
@@ -33,20 +33,21 @@ describe('AddarticleComponent', () => {
     fixture = TestBed.createComponent(AddarticleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    instance = new AddarticleComponent(new ArticlesModelService(), new Router(null, null, null, null, null, null, null, null));
+    instance = fixture.debugElement.componentInstance;
   });
 
-  xit('should check default parameters', () => {
+  it('should check default parameters', () => {
     expect(instance.title).toEqual("type title...");
     expect(instance.Content).toEqual("type content...");
     expect(instance.Description).toEqual("type description...");
     expect(instance.urlToImage).toEqual("type image url...");
-    expect(instance.url).toEqual("type content...");
+    expect(instance.url).toEqual("type article url...");
   });
 
-  xdescribe('.onSubmit', () => {
-    beforeEach(() => {
+  describe('.onSubmit', () => {
+    it('should save edited article', () => {
       let event = {
+        preventDefault: function() {},
         target: [
           {
             value: 'q'
@@ -65,11 +66,8 @@ describe('AddarticleComponent', () => {
           }
         ]
       };
-    });
 
-    it('should save edited article', () => {
       spyOn(instance.ArticlesModelService, 'changeArticle');
-      spyOn(instance.router, 'navigate');
       instance.ArticlesModelService.currentItem = true;
 
       instance.onSubmit(event);
@@ -79,8 +77,28 @@ describe('AddarticleComponent', () => {
     });
 
     it('should add new article', () => {
+      let event = {
+        preventDefault: function() {},
+        target: [
+          {
+            value: 'q'
+          },
+          {
+            value: 'w'
+          },
+          {
+            value: 'e'
+          },
+          {
+            value: 'r'
+          },
+          {
+            value: 't'
+          }
+        ]
+      };
+
       spyOn(instance.ArticlesModelService, 'addNewArticle');
-      spyOn(instance.router, 'navigate');
       spyOn(instance.ArticlesModelService, 'isExclusiveByTitle').and.returnValue(true);
       instance.ArticlesModelService.currentItem = false;
 
@@ -91,7 +109,7 @@ describe('AddarticleComponent', () => {
     });
   });
 
-  xdescribe('.ngOnInit', () => {
+  describe('.ngOnInit', () => {
     it('should set new values if current item exists', () => {
       instance.ArticlesModelService.currentItem = {
         title: 'q',

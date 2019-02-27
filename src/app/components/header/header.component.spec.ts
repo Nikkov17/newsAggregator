@@ -7,6 +7,7 @@ import { InputComponent } from '../common/input/input.component';
 import { SelectComponent } from '../common/select/select.component';
 import { ButtonComponent } from '../common/button/button.component';
 import { CheckboxComponent } from '../common/checkbox/checkbox.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -16,6 +17,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [ { provide: Router, useClass: class { navigate = jasmine.createSpy("navigate"); } }],
+      imports: [RouterTestingModule],
       declarations: [
         HeaderComponent,
         CheckboxComponent,
@@ -31,11 +33,10 @@ describe('HeaderComponent', () => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    instance = new HeaderComponent(new Router(null, null, null, null, null, null, null, null), new ArticlesModelService());
-    spyOn(instance.router, 'navigate');
+    instance = fixture.debugElement.componentInstance;
   });
 
-  xit('should check default parameters', () => {
+  it('should check default parameters', () => {
     expect(instance.select).toEqual({
       sourcesArray: ['abc-news', 'bbc-news', 'ansa', 'bbc-sport', 'bloomberg'],
       placeholder: 'choose source'
@@ -44,42 +45,61 @@ describe('HeaderComponent', () => {
     expect(instance.ChoosenSource).toEqual("Choosen source");
   });
 
-  xdescribe('.redirectHome', () => {
+  describe('.redirectHome', () => {
     it('should redirect Home', () => {
+      let event = {
+        preventDefault: function() {},
+        target: [
+          {
+            value: 'q'
+          }
+        ]
+      };
+
       instance.redirectHome(event);
 
       expect(instance.router.navigate).toHaveBeenCalledWith(['']);
     });
   });
 
-  xdescribe('.addArticleButton', () => {
+  describe('.addArticleButton', () => {
     it('should to add Article page', () => {
+      let event = {
+        preventDefault: function() {},
+        target: [
+          {
+            value: 'q'
+          }
+        ]
+      };
+
       instance.addArticleButton(event);
 
       expect(instance.router.navigate).toHaveBeenCalledWith(['addarticle']);
     });
   });
 
-  xdescribe('.filterFormSubmit', () => {
+  describe('.filterFormSubmit', () => {
     it('should set ArticlesModelService filter and updare articles to show array', () => {
       let event = {
+        preventDefault: function() {},
         target: [
           {
             value: 'q'
           }
         ]
-      }
+      };
 
       spyOn(instance.ArticlesModelService, 'updateArticlesToShowArray');
       
       instance.filterFormSubmit(event);
 
-      expect(instance.router.filter).toEqual('q');
+      expect(instance.ArticlesModelService.filter).toEqual('q');
       expect(instance.ArticlesModelService.updateArticlesToShowArray).toHaveBeenCalled();
     });
   });
 
-  xdescribe('.onSelectChange', () => {
+  describe('.onSelectChange', () => {
     it('should chenge selected source', () => {
       let value = 'q';
 
